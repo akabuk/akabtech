@@ -3,486 +3,342 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akabtech – IT Service & Cyber Security</title>
+<title>Akabtech – IT Service &amp; Cyber Security</title>
+<meta name="description" content="Akabtech is an independent IT consultancy in Bern, Switzerland — IT support, system administration, networking, cloud and cyber security.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-OYSDAWobWtjDFfsKUrslEqTOloMcVFO3TOJPYpu93C4='; style-src 'self' 'sha256-wUodQBSGL+gQ0TmkBUMvBOyLgjwRJVLF9CIQ+4yHmTo=' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none';">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* ── TOKENS ── */
   :root {
-    --bg:          #EEF2F7;       /* warm off-blue */
+    --bg:          #EEF2F7;
     --bg-alt:      #F7F9FC;
     --surface:     #FFFFFF;
     --charcoal:    #2D2D35;
+    --charcoal-2:  #38373F;
     --charcoal-lt: #4A4A56;
+    --off-white:   #F3F1EC;
+    --muted-dark:  rgba(243,241,236,.62);
+    --line-dark:   rgba(255,255,255,.12);
     --gold:        #B8965A;
     --gold-lt:     #D4AE72;
     --gold-bg:     #F5EDD8;
     --border:      #D8E0EA;
-    --hero-from:   #F5F0E8;
-    --hero-to:     #E8EDF4;
     --ff-head:     'Playfair Display', Georgia, serif;
     --ff-body:     'Inter', system-ui, sans-serif;
+    --ff-mono:     'JetBrains Mono', monospace;
     --r:           12px;
     --shadow:      0 4px 24px rgba(45,45,53,.09);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--bg);
     color: var(--charcoal);
     font-family: var(--ff-body);
     font-size: 16px;
     line-height: 1.7;
+    overflow-x: hidden;
   }
+  a { color: inherit; }
+  .mono { font-family: var(--ff-mono); }
 
-  /* ── NAV ── */
+  /* ── NAV (dark, matches hero) ── */
   nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(238,242,247,.92);
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(45,45,53,.92);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line-dark);
     padding: 0 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     height: 64px;
   }
-  .nav-logo {
-    font-family: var(--ff-head);
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--charcoal);
-    letter-spacing: .02em;
-  }
-  .nav-logo span { color: var(--gold); }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    list-style: none;
-  }
+  .nav-logo { font-family: var(--ff-head); font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: .02em; }
+  .nav-logo span { color: var(--gold-lt); }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
   .nav-links a {
-    text-decoration: none;
-    font-size: .88rem;
-    font-weight: 500;
-    color: var(--charcoal-lt);
-    letter-spacing: .04em;
-    text-transform: uppercase;
-    transition: color .2s;
+    text-decoration: none; font-size: .85rem; font-weight: 500; color: var(--muted-dark);
+    letter-spacing: .04em; text-transform: uppercase; transition: color .2s;
   }
-  .nav-links a:hover { color: var(--gold); }
-  .lang-toggle {
-    display: flex;
-    gap: .35rem;
-  }
+  .nav-links a:hover { color: var(--gold-lt); }
+  .nav-right { display: flex; align-items: center; gap: 1.2rem; }
+  .lang-toggle { display: flex; gap: .35rem; }
   .lang-btn {
-    background: none;
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
-    padding: 3px 10px;
-    font-family: var(--ff-body);
-    font-size: .78rem;
-    font-weight: 600;
-    cursor: pointer;
-    color: var(--charcoal-lt);
-    transition: all .2s;
+    background: none; border: 1.5px solid var(--line-dark); border-radius: 6px; padding: 3px 10px;
+    font-family: var(--ff-body); font-size: .78rem; font-weight: 600; cursor: pointer;
+    color: var(--muted-dark); transition: all .2s;
   }
-  .lang-btn.active {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: #fff;
+  .lang-btn.active { background: var(--gold); border-color: var(--gold); color: #fff; }
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: .4rem; background: var(--gold); color: #fff;
+    text-decoration: none; font-size: .82rem; font-weight: 600; padding: 9px 18px; border-radius: 50px;
+    letter-spacing: .03em; transition: background .2s;
   }
+  .nav-cta:hover { background: var(--gold-lt); }
+  .burger { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 6px; }
+  .burger span { width: 20px; height: 2px; background: #fff; border-radius: 2px; }
 
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(135deg, var(--hero-from) 0%, var(--hero-to) 100%);
-    padding: 100px 5% 90px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
-    min-height: 88vh;
-  }
-  .hero-text { max-width: 580px; }
-  .hero-eyebrow {
-    display: inline-block;
-    font-size: .8rem;
-    font-weight: 600;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.2rem;
-    padding: 4px 14px;
-    background: var(--gold-bg);
-    border-radius: 50px;
-    border: 1px solid var(--gold-lt);
-  }
-  .hero h1 {
-    font-family: var(--ff-head);
-    font-size: clamp(2.6rem, 5vw, 4rem);
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--charcoal);
-    margin-bottom: 1rem;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-  .hero-tagline {
-    font-size: 1.1rem;
-    color: var(--charcoal-lt);
-    margin-bottom: 2rem;
-    font-weight: 300;
-    max-width: 460px;
-    line-height: 1.6;
-  }
-  .hero-tagline strong { color: var(--charcoal); font-weight: 500; }
-  .cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    background: var(--gold);
-    color: #fff;
-    text-decoration: none;
-    font-family: var(--ff-body);
-    font-size: .95rem;
-    font-weight: 600;
-    padding: 14px 30px;
-    border-radius: 50px;
-    letter-spacing: .04em;
-    transition: background .2s, transform .15s;
-    box-shadow: 0 4px 18px rgba(184,150,90,.35);
-  }
-  .cta-btn:hover { background: var(--gold-lt); transform: translateY(-1px); }
-  .hero-visual {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  .badge-ring {
-    width: 280px; height: 280px;
-    border-radius: 50%;
-    background: conic-gradient(var(--gold-bg), var(--hero-to), var(--gold-bg));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 0 8px rgba(184,150,90,.12), var(--shadow);
-    position: relative;
-  }
-  .badge-inner {
-    width: 220px; height: 220px;
-    border-radius: 50%;
-    background: var(--surface);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 1.5rem;
-    box-shadow: var(--shadow);
-  }
-  .badge-icon { font-size: 2.8rem; margin-bottom: .4rem; }
-  .badge-label {
-    font-family: var(--ff-head);
-    font-size: .95rem;
-    font-weight: 700;
-    color: var(--charcoal);
-  }
-  .badge-sub { font-size: .72rem; color: var(--gold); letter-spacing: .08em; text-transform: uppercase; }
-  .hero-stats {
-    display: flex;
-    gap: 1.5rem;
-  }
-  .stat {
-    background: var(--surface);
-    border-radius: var(--r);
-    padding: 14px 20px;
-    text-align: center;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-  }
-  .stat-num { font-family: var(--ff-head); font-size: 1.5rem; font-weight: 700; color: var(--gold); }
-  .stat-lbl { font-size: .72rem; color: var(--charcoal-lt); text-transform: uppercase; letter-spacing: .06em; }
-
-  /* ── SECTIONS ── */
-  section { padding: 90px 5%; }
-  .section-inner { max-width: 1100px; margin: 0 auto; }
-  .section-eyebrow {
-    font-size: .78rem;
-    font-weight: 600;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: .7rem;
-  }
-  .section-title {
-    font-family: var(--ff-head);
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 700;
-    color: var(--charcoal);
-    margin-bottom: 1.2rem;
-  }
-  .section-lead {
-    font-size: 1.05rem;
-    color: var(--charcoal-lt);
-    max-width: 600px;
-    line-height: 1.75;
-  }
-  hr.divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 0 5%;
-  }
-
-  /* ── ABOUT ── */
-  #about { background: var(--surface); }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    margin-top: 3rem;
-  }
-  .about-card {
-    background: var(--bg-alt);
-    border-radius: var(--r);
-    padding: 2.2rem;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-  }
-  .about-card h3 {
-    font-family: var(--ff-head);
-    font-size: 1.2rem;
-    margin-bottom: .8rem;
-    color: var(--charcoal);
-  }
-  .about-card p { color: var(--charcoal-lt); font-size: .97rem; }
-  .about-pill-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-    margin-top: 1.4rem;
-  }
-  .pill {
-    background: var(--gold-bg);
-    border: 1px solid var(--gold-lt);
-    color: var(--gold);
-    border-radius: 50px;
-    padding: 4px 14px;
-    font-size: .78rem;
-    font-weight: 600;
-    letter-spacing: .04em;
-  }
-
-  /* ── SERVICES ── */
-  #services { background: var(--bg); }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.6rem;
-    margin-top: 3rem;
-  }
-  .svc-card {
-    background: var(--surface);
-    border-radius: var(--r);
-    padding: 2rem;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    transition: transform .2s, box-shadow .2s;
+  /* ── HERO + INTRO (dark shared zone, like swissitsol) ── */
+  .dark-zone {
+    background:
+      radial-gradient(ellipse 900px 500px at 82% -10%, rgba(184,150,90,.16), transparent 60%),
+      var(--charcoal);
+    color: var(--off-white);
     position: relative;
     overflow: hidden;
   }
+  .hero {
+    position: relative;
+    padding: 90px 5% 60px;
+    display: flex; align-items: center; justify-content: space-between; gap: 3rem;
+    min-height: 82vh;
+  }
+  .hero-net { position: absolute; inset: 0; opacity: .55; pointer-events: none; }
+  .hero-net line { stroke: var(--line-dark); stroke-width: 1; }
+  .hero-net circle { fill: var(--gold-lt); animation: pulse 3.2s ease-in-out infinite; }
+  .hero-net circle:nth-child(3n) { animation-delay: .5s; fill: var(--off-white); opacity: .5; }
+  .hero-net circle:nth-child(4n) { animation-delay: 1.1s; }
+  @keyframes pulse { 0%,100%{opacity:.45; r:4;} 50%{opacity:1; r:6;} }
+
+  .hero-text { max-width: 580px; position: relative; z-index: 1; }
+  .eyebrow-pill {
+    display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--gold-lt); margin-bottom: 1.2rem; padding: 4px 14px;
+    background: rgba(184,150,90,.14); border-radius: 50px; border: 1px solid rgba(212,174,114,.4);
+  }
+  .hero h1 {
+    font-family: var(--ff-head); font-size: clamp(2.6rem, 5vw, 4rem); font-weight: 700;
+    line-height: 1.15; color: #fff; margin-bottom: 1rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-lt); }
+  .hero-tagline {
+    font-size: 1.1rem; color: var(--muted-dark); margin-bottom: 2rem; font-weight: 300;
+    max-width: 460px; line-height: 1.6;
+  }
+  .hero-tagline strong { color: #fff; font-weight: 500; }
+  .hero-cta-row { display: flex; gap: .9rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: .5rem; background: var(--gold); color: #fff;
+    text-decoration: none; font-family: var(--ff-body); font-size: .95rem; font-weight: 600;
+    padding: 14px 30px; border-radius: 50px; letter-spacing: .04em;
+    transition: background .2s, transform .15s; box-shadow: 0 4px 18px rgba(184,150,90,.35); border: none; cursor: pointer;
+  }
+  .cta-btn:hover { background: var(--gold-lt); transform: translateY(-1px); }
+  .cta-btn.ghost { background: transparent; color: #fff; box-shadow: none; border: 1.5px solid var(--line-dark); }
+  .cta-btn.ghost:hover { border-color: var(--gold-lt); color: var(--gold-lt); background: transparent; transform: none; }
+  .cta-btn.on-light { color: var(--charcoal); background: var(--charcoal); color: #fff; }
+
+  .stat-row { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .stat {
+    background: rgba(255,255,255,.05); border-radius: var(--r); padding: 14px 20px; text-align: center;
+    border: 1px solid var(--line-dark);
+  }
+  .stat-num { font-family: var(--ff-head); font-size: 1.5rem; font-weight: 700; color: var(--gold-lt); }
+  .stat-lbl { font-size: .72rem; color: var(--muted-dark); text-transform: uppercase; letter-spacing: .06em; }
+
+  .hero-visual { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 1rem; position: relative; z-index: 1; }
+  .badge-ring {
+    width: 260px; height: 260px; border-radius: 50%;
+    background: conic-gradient(rgba(184,150,90,.18), rgba(255,255,255,.03), rgba(184,150,90,.18));
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 0 8px rgba(184,150,90,.1); position: relative;
+  }
+  .badge-inner {
+    width: 200px; height: 200px; border-radius: 50%; background: var(--charcoal-2);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 1.5rem; border: 1px solid var(--line-dark);
+  }
+  .badge-icon { font-size: 2.6rem; margin-bottom: .4rem; }
+  .badge-label { font-family: var(--ff-head); font-size: .95rem; font-weight: 700; color: #fff; }
+  .badge-sub { font-size: .72rem; color: var(--gold-lt); letter-spacing: .08em; text-transform: uppercase; }
+
+  /* intro / pill strip within dark zone */
+  .intro-strip {
+    position: relative; z-index: 1;
+    max-width: 780px;
+    padding: 10px 5% 90px;
+    border-top: 1px solid var(--line-dark);
+    margin: 0 5%;
+    padding-left: 0; padding-right: 0;
+  }
+  .intro-strip-inner { padding-top: 46px; }
+  .intro-strip p { color: var(--muted-dark); font-size: 1rem; max-width: 640px; margin-bottom: 1.6rem; }
+  .intro-strip p strong { color: #fff; }
+  .pill-row-dark { display: flex; flex-wrap: wrap; gap: .55rem; }
+  .pill-dark {
+    background: rgba(255,255,255,.06); border: 1px solid var(--line-dark); color: var(--off-white);
+    border-radius: 50px; padding: 6px 15px; font-size: .78rem; font-weight: 500; letter-spacing: .02em;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .pill-dark::before { content:""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-lt); display: inline-block; }
+
+  /* ── CORE 3 SERVICES (still dark zone) ── */
+  .core {
+    position: relative; z-index: 1;
+    padding: 20px 5% 100px;
+  }
+  .core-head { max-width: 620px; margin-bottom: 2.6rem; }
+  .core-eyebrow { font-family: var(--ff-mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: .6rem; }
+  .core-title { font-family: var(--ff-head); font-size: clamp(1.7rem, 2.6vw, 2.2rem); font-weight: 700; color: #fff; }
+  .core-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); border-radius: var(--r); overflow: hidden; }
+  .core-card { background: var(--charcoal-2); padding: 2.2rem 2rem; }
+  .core-card .num { font-family: var(--ff-mono); font-size: .75rem; color: var(--gold-lt); letter-spacing: .1em; }
+  .core-card .ic {
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-dark);
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin: 18px 0 20px;
+  }
+  .core-card h3 { font-family: var(--ff-head); color: #fff; font-size: 1.15rem; margin-bottom: .6rem; }
+  .core-card p { color: var(--muted-dark); font-size: .9rem; }
+
+  /* ── GOLD CTA BANNER (breaks the dark rhythm, like swiss's light callouts) ── */
+  .cta-banner {
+    background: var(--gold-bg); padding: 56px 5%;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    border-bottom: 1px solid var(--gold-lt);
+  }
+  .cta-banner-text h3 { font-family: var(--ff-head); font-size: clamp(1.3rem, 2.2vw, 1.75rem); font-weight: 700; margin-bottom: .4rem; color: var(--charcoal); }
+  .cta-banner-text p { color: var(--charcoal-lt); font-size: .95rem; max-width: 480px; }
+  .cta-banner .cta-btn { background: var(--charcoal); }
+  .cta-banner .cta-btn:hover { background: #1c1c22; }
+
+  /* ── SECTIONS generic (light) ── */
+  section { padding: 90px 5%; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow { font-family: var(--ff-mono); font-size: .78rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: .7rem; }
+  .section-title { font-family: var(--ff-head); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: var(--charcoal); margin-bottom: 1.2rem; }
+  .section-lead { font-size: 1.05rem; color: var(--charcoal-lt); max-width: 600px; line-height: 1.75; }
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 0 5%; }
+
+  /* ── FEATURES STRIP ("Powered by") ── */
+  #why { background: var(--bg-alt); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3rem; }
+  .why-item .why-ico {
+    width: 46px; height: 46px; border-radius: 50%; background: var(--gold-bg); border: 1px solid var(--gold-lt);
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1.1rem;
+  }
+  .why-item h4 { font-family: var(--ff-head); font-size: 1.1rem; margin-bottom: .5rem; color: var(--charcoal); }
+  .why-item p { font-size: .92rem; color: var(--charcoal-lt); }
+
+  /* ── NUMBERED POPULAR SERVICES INDEX ── */
+  #index { background: var(--surface); }
+  .index-list { margin-top: 3rem; border-top: 1px solid var(--border); }
+  .index-row {
+    display: flex; align-items: center; gap: 1.6rem; padding: 20px 0; border-bottom: 1px solid var(--border);
+    text-decoration: none; color: var(--charcoal); transition: padding-left .2s, color .2s;
+  }
+  .index-row:hover { padding-left: 10px; color: var(--gold); }
+  .index-row .idx { font-family: var(--ff-mono); font-size: 1rem; color: var(--gold); min-width: 34px; }
+  .index-row .idx-title { font-family: var(--ff-head); font-size: 1.15rem; font-weight: 700; flex: 1; }
+  .index-row .idx-arrow { font-size: 1.1rem; color: var(--charcoal-lt); }
+
+  /* ── SERVICES DETAIL GRID ── */
+  #services { background: var(--bg); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.6rem; margin-top: 3rem; }
+  .svc-card {
+    background: var(--surface); border-radius: var(--r); padding: 2rem; border: 1px solid var(--border);
+    box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; position: relative; overflow: hidden;
+    scroll-margin-top: 90px;
+  }
   .svc-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold), var(--gold-lt));
-    opacity: 0;
-    transition: opacity .2s;
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-lt)); opacity: 0; transition: opacity .2s;
   }
-  .svc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(45,45,53,.13); }
-  .svc-card:hover::before { opacity: 1; }
+  .svc-card:hover, .svc-card:target { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(45,45,53,.13); }
+  .svc-card:hover::before, .svc-card:target::before { opacity: 1; }
   .svc-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
-  .svc-title {
-    font-family: var(--ff-head);
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--charcoal);
-    margin-bottom: .6rem;
-  }
+  .svc-title { font-family: var(--ff-head); font-size: 1.15rem; font-weight: 700; color: var(--charcoal); margin-bottom: .6rem; }
   .svc-body { font-size: .9rem; color: var(--charcoal-lt); line-height: 1.65; }
-  .svc-tags {
-    display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem;
-  }
-  .svc-tag {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 2px 9px;
-    font-size: .73rem;
-    color: var(--charcoal-lt);
-    font-weight: 500;
-  }
-  /* IT Support hardware visual */
-  .hw-visual {
-    display: flex;
-    gap: .6rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-  }
-  .hw-chip {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 8px 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    font-size: .68rem;
-    color: var(--charcoal-lt);
-  }
+  .svc-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+  .svc-tag { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 2px 9px; font-size: .73rem; color: var(--charcoal-lt); font-weight: 500; }
+  .hw-visual { display: flex; gap: .6rem; margin-top: 1rem; flex-wrap: wrap; }
+  .hw-chip { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: .68rem; color: var(--charcoal-lt); }
   .hw-chip span { font-size: 1.3rem; }
 
+  /* ── ABOUT ── */
+  #about { background: var(--surface); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+  .about-card { background: var(--bg-alt); border-radius: var(--r); padding: 2.2rem; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  .about-card h3 { font-family: var(--ff-head); font-size: 1.2rem; margin-bottom: .8rem; color: var(--charcoal); }
+  .about-card p { color: var(--charcoal-lt); font-size: .97rem; }
+  .about-pill-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.4rem; }
+  .pill { background: var(--gold-bg); border: 1px solid var(--gold-lt); color: var(--gold); border-radius: 50px; padding: 4px 14px; font-size: .78rem; font-weight: 600; letter-spacing: .04em; }
+
   /* ── CONTACT ── */
-  #contact { background: var(--surface); }
-  .contact-wrap {
-    margin-top: 3rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
-  .contact-card {
-    background: var(--bg-alt);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    padding: 2.5rem;
-    box-shadow: var(--shadow);
-  }
-  .contact-name {
-    font-family: var(--ff-head);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--charcoal);
-    margin-bottom: .3rem;
-  }
-  .contact-role {
-    font-size: .85rem;
-    color: var(--gold);
-    font-weight: 600;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    margin-bottom: 1.8rem;
-  }
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: .9rem;
-    margin-bottom: 1rem;
-    font-size: .97rem;
-    color: var(--charcoal-lt);
-  }
-  .contact-item a {
-    color: var(--charcoal-lt);
-    text-decoration: none;
-    transition: color .2s;
-  }
+  #contact { background: var(--bg-alt); }
+  .contact-wrap { margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 2.5rem; box-shadow: var(--shadow); }
+  .contact-name { font-family: var(--ff-head); font-size: 1.5rem; font-weight: 700; color: var(--charcoal); margin-bottom: .3rem; }
+  .contact-role { font-size: .85rem; color: var(--gold); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1.8rem; }
+  .contact-item { display: flex; align-items: center; gap: .9rem; margin-bottom: 1rem; font-size: .97rem; color: var(--charcoal-lt); }
+  .contact-item a { color: var(--charcoal-lt); text-decoration: none; transition: color .2s; }
   .contact-item a:hover { color: var(--gold); }
-  .contact-ico {
-    width: 38px; height: 38px;
-    border-radius: 8px;
-    background: var(--gold-bg);
-    border: 1px solid var(--gold-lt);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    flex-shrink: 0;
-  }
+  .contact-ico { width: 38px; height: 38px; border-radius: 8px; background: var(--gold-bg); border: 1px solid var(--gold-lt); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
   .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    background: var(--bg-alt);
-    font-family: var(--ff-body);
-    font-size: .95rem;
-    color: var(--charcoal);
-    outline: none;
-    transition: border-color .2s;
+  .contact-form input, .contact-form textarea {
+    width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--surface);
+    font-family: var(--ff-body); font-size: .95rem; color: var(--charcoal); outline: none; transition: border-color .2s;
   }
-  .contact-form input:focus,
-  .contact-form textarea:focus { border-color: var(--gold); }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--gold); }
   .contact-form textarea { min-height: 130px; resize: vertical; }
-  .contact-form label {
-    font-size: .82rem;
-    font-weight: 600;
-    color: var(--charcoal);
-    letter-spacing: .04em;
-    margin-bottom: 3px;
-    display: block;
-  }
+  .contact-form label { font-size: .82rem; font-weight: 600; color: var(--charcoal); letter-spacing: .04em; margin-bottom: 3px; display: block; }
   .form-group { display: flex; flex-direction: column; }
   .submit-btn {
-    background: var(--gold);
-    color: #fff;
-    border: none;
-    border-radius: 50px;
-    padding: 13px 30px;
-    font-family: var(--ff-body);
-    font-size: .95rem;
-    font-weight: 600;
-    cursor: pointer;
-    letter-spacing: .04em;
-    transition: background .2s;
-    align-self: flex-start;
+    background: var(--gold); color: #fff; border: none; border-radius: 50px; padding: 13px 30px;
+    font-family: var(--ff-body); font-size: .95rem; font-weight: 600; cursor: pointer; letter-spacing: .04em;
+    transition: background .2s; align-self: flex-start;
   }
   .submit-btn:hover { background: var(--gold-lt); }
+  .form-msg { font-size: .85rem; color: var(--gold); display: none; }
+  .form-msg.show { display: block; }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--charcoal);
-    color: rgba(255,255,255,.55);
-    text-align: center;
-    padding: 2rem 5%;
-    font-size: .82rem;
+  /* ── FOOTER (dark, 3-column like swiss) ── */
+  footer { background: var(--charcoal); color: rgba(255,255,255,.55); padding-top: 70px; }
+  .footer-top {
+    max-width: 1100px; margin: 0 auto; padding: 0 5% 56px;
+    display: grid; grid-template-columns: 1.3fr 1fr 1fr 1.1fr; gap: 3rem;
+    border-bottom: 1px solid var(--line-dark);
   }
-  footer span { color: var(--gold-lt); }
+  .footer-brand .nav-logo { margin-bottom: .9rem; }
+  .footer-brand p { color: rgba(255,255,255,.5); font-size: .9rem; max-width: 260px; }
+  .foot-col h5 {
+    font-family: var(--ff-mono); font-size: .74rem; letter-spacing: .14em; text-transform: uppercase;
+    color: rgba(255,255,255,.4); margin-bottom: 1.3rem; font-weight: 500;
+  }
+  .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: .8rem; }
+  .foot-col a { font-size: .92rem; color: rgba(255,255,255,.75); text-decoration: none; transition: color .2s; }
+  .foot-col a:hover { color: var(--gold-lt); }
+  .foot-contact-line { display: flex; gap: .6rem; font-size: .88rem; color: rgba(255,255,255,.75); align-items: flex-start; }
+  .footer-bottom {
+    max-width: 1100px; margin: 0 auto; padding: 26px 5%;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: .82rem;
+  }
+  footer .gold { color: var(--gold-lt); }
 
   /* ── LANG TOGGLE ── */
   [data-lang] { display: none; }
-  body.lang-en [data-lang="en"] { display: unset; }
-  body.lang-de [data-lang="de"] { display: unset; }
-  body.lang-en .block-en { display: block; }
-  body.lang-de .block-de { display: block; }
-  .block-en, .block-de { display: none; }
-  /* inline spans */
   body.lang-en span[data-lang="en"] { display: inline; }
   body.lang-de span[data-lang="de"] { display: inline; }
-  /* flex elements */
-  body.lang-en .flex-en { display: flex; }
-  body.lang-de .flex-de { display: flex; }
-  .flex-en, .flex-de { display: none !important; }
+  body.lang-en .block-en, body.lang-de .block-de { display: block; }
+  .block-en, .block-de { display: none; }
 
   /* ── RESPONSIVE ── */
+  @media (max-width: 980px) {
+    .footer-top { grid-template-columns: 1fr 1fr; row-gap: 2.6rem; }
+  }
   @media (max-width: 900px) {
-    .hero { flex-direction: column; padding: 70px 5%; min-height: auto; }
-    .about-grid, .contact-wrap { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
+    .hero { flex-direction: column; padding: 60px 5% 40px; min-height: auto; }
     .hero-visual { width: 100%; }
+    .core-grid { grid-template-columns: 1fr; }
+    .about-grid, .contact-wrap { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .cta-banner { flex-direction: column; align-items: flex-start; }
+    .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--charcoal); flex-direction: column; align-items: flex-start; gap: 1.2rem; padding: 1.4rem 5%; border-bottom: 1px solid var(--line-dark); }
+    .nav-links.open { display: flex; }
+    .burger { display: flex; }
+    .footer-top { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -491,146 +347,206 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Akab<span>tech</span></div>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="#about"><span data-lang="en">About</span><span data-lang="de">Über uns</span></a></li>
     <li><a href="#services"><span data-lang="en">Services</span><span data-lang="de">Leistungen</span></a></li>
     <li><a href="#contact"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a></li>
   </ul>
-  <div class="lang-toggle">
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
-    <button class="lang-btn active" onclick="setLang('de')">DE</button>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn" type="button" data-lang-btn="en">EN</button>
+      <button class="lang-btn active" type="button" data-lang-btn="de">DE</button>
+    </div>
+    <a href="#contact" class="nav-cta"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-text">
-    <div class="hero-eyebrow">
-      <span data-lang="en">IT Service &amp; Cyber Security · Bern, Switzerland</span>
-      <span data-lang="de">IT-Service &amp; Cyber Security · Bern, Schweiz</span>
+<div class="dark-zone">
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <svg class="hero-net" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="80" x2="220" y2="160"/><line x1="220" y1="160" x2="180" y2="300"/>
+      <line x1="220" y1="160" x2="380" y2="120"/><line x1="380" y1="120" x2="520" y2="220"/>
+      <line x1="820" y1="60" x2="900" y2="180"/><line x1="900" y1="180" x2="840" y2="320"/>
+      <line x1="900" y1="180" x2="980" y2="260"/>
+      <circle cx="60" cy="80" r="4"/><circle cx="220" cy="160" r="5"/><circle cx="180" cy="300" r="4"/>
+      <circle cx="380" cy="120" r="4"/><circle cx="520" cy="220" r="4"/>
+      <circle cx="820" cy="60" r="4"/><circle cx="900" cy="180" r="5"/><circle cx="840" cy="320" r="4"/><circle cx="980" cy="260" r="4"/>
+    </svg>
+    <div class="hero-text">
+      <div class="eyebrow-pill">
+        <span data-lang="en">IT Service &amp; Cyber Security · Bern, Switzerland</span>
+        <span data-lang="de">IT-Service &amp; Cyber Security · Bern, Schweiz</span>
+      </div>
+      <h1>
+        <span data-lang="en">Solving your <em>IT challenges</em><br>with precision.</span>
+        <span data-lang="de">Ihre <em>IT-Herausforderungen</em><br>präzise gelöst.</span>
+      </h1>
+      <p class="hero-tagline">
+        <span data-lang="en"><strong>Direct access to a senior IT &amp; security specialist</strong> — from hands-on hardware support to cloud transformation and cyber security hardening.</span>
+        <span data-lang="de"><strong>Direkter Zugang zu einem Senior IT- &amp; Sicherheitsspezialisten</strong> — von Hardware-Support bis Cloud-Transformation und Security-Härtung.</span>
+      </p>
+      <div class="hero-cta-row">
+        <a href="#contact" class="cta-btn">
+          <span data-lang="en">Let's Connect →</span>
+          <span data-lang="de">Kontakt aufnehmen →</span>
+        </a>
+        <a href="#index" class="cta-btn ghost">
+          <span data-lang="en">View Services</span>
+          <span data-lang="de">Leistungen ansehen</span>
+        </a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-num">5+</div><div class="stat-lbl"><span data-lang="en">Services</span><span data-lang="de">Leistungen</span></div></div>
+        <div class="stat"><div class="stat-num">🔐</div><div class="stat-lbl"><span data-lang="en">Cyber Sec</span><span data-lang="de">Sicherheit</span></div></div>
+        <div class="stat"><div class="stat-num">☁️</div><div class="stat-lbl"><span data-lang="en">Multi-Cloud</span><span data-lang="de">Multi-Cloud</span></div></div>
+      </div>
     </div>
-    <h1>
-      <span data-lang="en">Solving your <em>IT challenges</em><br>with precision.</span>
-      <span data-lang="de">Ihre <em>IT-Herausforderungen</em><br>präzise gelöst.</span>
-    </h1>
-    <p class="hero-tagline">
-      <span data-lang="en"><strong>Helping you find the right IT Technician</strong> to solve your Problems — from secure infrastructure to cloud transformation.</span>
-      <span data-lang="de"><strong>Wir helfen Ihnen, den richtigen IT-Techniker</strong> zu finden — von sicherer Infrastruktur bis zur Cloud-Transformation.</span>
-    </p>
-    <a href="#contact" class="cta-btn">
-      <span data-lang="en">Let's Connect →</span>
-      <span data-lang="de">Kontakt aufnehmen →</span>
-    </a>
-  </div>
-  <div class="hero-visual">
-    <div class="badge-ring">
-      <div class="badge-inner">
-        <div class="badge-icon">🛡️</div>
-        <div class="badge-label">Akabtech</div>
-        <div class="badge-sub">
-          <span data-lang="en">Est. 2025 · Bern</span>
-          <span data-lang="de">Gegr. 2025 · Bern</span>
+    <div class="hero-visual">
+      <div class="badge-ring">
+        <div class="badge-inner">
+          <div class="badge-icon">🛡️</div>
+          <div class="badge-label">Akabtech</div>
+          <div class="badge-sub"><span data-lang="en">Est. 2025 · Bern</span><span data-lang="de">Gegr. 2025 · Bern</span></div>
         </div>
       </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">5+</div>
-        <div class="stat-lbl"><span data-lang="en">Services</span><span data-lang="de">Leistungen</span></div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">🔐</div>
-        <div class="stat-lbl"><span data-lang="en">Cyber Sec</span><span data-lang="de">Sicherheit</span></div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">☁️</div>
-        <div class="stat-lbl"><span data-lang="en">Multi-Cloud</span><span data-lang="de">Multi-Cloud</span></div>
+  </section>
+
+  <!-- INTRO STRIP (still dark, mirrors swiss "We Are..." block) -->
+  <div class="intro-strip">
+    <div class="intro-strip-inner">
+      <p>
+        <span data-lang="en"><strong>We are Akabtech</strong> — an independent IT consultancy founded in Bern in 2025. We deliver on-demand and fully managed IT support so you can focus on running your business, not your infrastructure.</span>
+        <span data-lang="de"><strong>Wir sind Akabtech</strong> — eine unabhängige, 2025 in Bern gegründete IT-Beratung. Wir liefern bedarfsgerechten und vollständig verwalteten IT-Support, damit Sie sich auf Ihr Geschäft statt auf Ihre Infrastruktur konzentrieren können.</span>
+      </p>
+      <div class="pill-row-dark">
+        <span class="pill-dark"><span data-lang="en">System Administration</span><span data-lang="de">Systemadministration</span></span>
+        <span class="pill-dark"><span data-lang="en">Network Management</span><span data-lang="de">Netzwerkverwaltung</span></span>
+        <span class="pill-dark"><span data-lang="en">Cloud Solutions</span><span data-lang="de">Cloud-Lösungen</span></span>
+        <span class="pill-dark"><span data-lang="en">Web Design</span><span data-lang="de">Webdesign</span></span>
       </div>
     </div>
   </div>
-</section>
 
-<hr class="divider">
+  <!-- CORE 3 SERVICES -->
+  <div class="core">
+    <div class="core-head">
+      <p class="core-eyebrow"><span data-lang="en">What we do best</span><span data-lang="de">Unsere Kernkompetenzen</span></p>
+      <h2 class="core-title"><span data-lang="en">Three pillars, one dependable IT partner.</span><span data-lang="de">Drei Säulen, ein verlässlicher IT-Partner.</span></h2>
+    </div>
+    <div class="core-grid">
+      <div class="core-card">
+        <span class="num">01</span>
+        <div class="ic">🖥️</div>
+        <h3><span data-lang="en">IT Support</span><span data-lang="de">IT-Support</span></h3>
+        <p><span data-lang="en">Hands-on troubleshooting and maintenance for desktops, laptops, servers and peripherals.</span><span data-lang="de">Direkte Fehleranalyse und Wartung von Desktops, Laptops, Servern und Peripheriegeräten.</span></p>
+      </div>
+      <div class="core-card">
+        <span class="num">02</span>
+        <div class="ic">🌐</div>
+        <h3><span data-lang="en">Network Management</span><span data-lang="de">Netzwerkverwaltung</span></h3>
+        <p><span data-lang="en">IP planning, VLAN design and full configuration of Cisco switches &amp; routers.</span><span data-lang="de">IP-Planung, VLAN-Design und vollständige Konfiguration von Cisco-Switches &amp; Routern.</span></p>
+      </div>
+      <div class="core-card">
+        <span class="num">03</span>
+        <div class="ic">🔐</div>
+        <h3><span data-lang="en">Cyber Security</span><span data-lang="de">Cybersicherheit</span></h3>
+        <p><span data-lang="en">Website protection, DLP, phishing defence and security awareness training.</span><span data-lang="de">Website-Schutz, DLP, Phishing-Abwehr und Security-Awareness-Schulungen.</span></p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- ABOUT -->
-<section id="about">
+<!-- GOLD CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-banner-text">
+    <h3><span data-lang="en">We provide reliable solutions tailored to your specific needs.</span><span data-lang="de">Wir liefern verlässliche Lösungen, massgeschneidert für Ihre Anforderungen.</span></h3>
+    <p><span data-lang="en">Reach out directly — no automated responses, no waiting queues.</span><span data-lang="de">Kontaktieren Sie uns direkt – keine automatisierten Antworten, keine Warteschlangen.</span></p>
+  </div>
+  <a href="#contact" class="cta-btn"><span data-lang="en">Talk to an Expert →</span><span data-lang="de">Mit Experten sprechen →</span></a>
+</div>
+
+<!-- WHY / FEATURES STRIP -->
+<section id="why">
   <div class="section-inner">
-    <p class="section-eyebrow">
-      <span data-lang="en">About Akabtech</span>
-      <span data-lang="de">Über Akabtech</span>
-    </p>
-    <h2 class="section-title">
-      <span data-lang="en">Your trusted IT partner<br>since 2025.</span>
-      <span data-lang="de">Ihr verlässlicher IT-Partner<br>seit 2025.</span>
-    </h2>
-    <p class="section-lead">
-      <span data-lang="en">Akabtech is an independent IT consultancy based in Bern, Switzerland. Founded in 2025 by Akram Abubaker, we bring enterprise-grade expertise to businesses of every size — with a focus on reliability, transparency, and security-first thinking.</span>
-      <span data-lang="de">Akabtech ist eine unabhängige IT-Beratung mit Sitz in Bern, Schweiz. Gegründet 2025 von Akram Abubaker, bieten wir Unternehmen jeder Grösse erstklassiges IT-Know-how — mit Fokus auf Zuverlässigkeit, Transparenz und Security-First-Denken.</span>
-    </p>
-    <div class="about-grid">
-      <div class="about-card">
-        <h3>
-          <span data-lang="en">🎯 Our Mission</span>
-          <span data-lang="de">🎯 Unsere Mission</span>
-        </h3>
-        <p>
-          <span data-lang="en">We bridge the gap between complex technology and real business needs. Whether you're a growing SME or an established enterprise, Akabtech delivers tailored solutions that keep your systems running, your data protected, and your team productive.</span>
-          <span data-lang="de">Wir schliessen die Lücke zwischen komplexer Technologie und realen Geschäftsanforderungen. Egal ob wachsendes KMU oder etabliertes Unternehmen – Akabtech liefert massgeschneiderte Lösungen für stabile Systeme, geschützte Daten und produktive Teams.</span>
-        </p>
-        <div class="about-pill-row">
-          <span class="pill">IT Support</span>
-          <span class="pill">Cyber Security</span>
-          <span class="pill">Cloud</span>
-          <span class="pill">Networking</span>
-          <span class="pill">Web Design</span>
-        </div>
+    <p class="section-eyebrow"><span data-lang="en">Powered by Akabtech</span><span data-lang="de">Von Akabtech</span></p>
+    <h2 class="section-title"><span data-lang="en">No middlemen. No hand-offs.</span><span data-lang="de">Kein Mittelmann. Keine Übergaben.</span></h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-ico">🎯</div>
+        <h4><span data-lang="en">One Point of Contact</span><span data-lang="de">Ein Ansprechpartner</span></h4>
+        <p><span data-lang="en">You work directly with the specialist handling your project, from first call to final rollout.</span><span data-lang="de">Sie arbeiten direkt mit dem Spezialisten, der Ihr Projekt betreut – vom ersten Gespräch bis zum Abschluss.</span></p>
       </div>
-      <div class="about-card">
-        <h3>
-          <span data-lang="en">🌍 Why Akabtech?</span>
-          <span data-lang="de">🌍 Warum Akabtech?</span>
-        </h3>
-        <p>
-          <span data-lang="en">As a self-employed specialist, you get direct access to senior expertise — no middlemen, no delegation chains. Projects are handled with full accountability, clear communication in German and English, and a commitment to long-term partnerships over one-off fixes.</span>
-          <span data-lang="de">Als selbstständiger Spezialist erhalten Sie direkten Zugang zu Senior-Expertise – kein Mittelmann, keine Delegationsketten. Projekte werden mit voller Verantwortung, klarer Kommunikation auf Deutsch und Englisch und dem Ziel langfristiger Partnerschaften umgesetzt.</span>
-        </p>
-        <div class="about-pill-row">
-          <span class="pill">🇨🇭 Bern Based</span>
-          <span class="pill">DE / EN</span>
-          <span class="pill">Direct Contact</span>
-        </div>
+      <div class="why-item">
+        <div class="why-ico">🗣️</div>
+        <h4><span data-lang="en">Bilingual Communication</span><span data-lang="de">Zweisprachige Kommunikation</span></h4>
+        <p><span data-lang="en">Support and documentation in German and English, so nothing gets lost in translation.</span><span data-lang="de">Support und Dokumentation auf Deutsch und Englisch – nichts geht in der Übersetzung verloren.</span></p>
+      </div>
+      <div class="why-item">
+        <div class="why-ico">🔐</div>
+        <h4><span data-lang="en">Security-First Thinking</span><span data-lang="de">Security-First-Denken</span></h4>
+        <p><span data-lang="en">Every recommendation is weighed against your risk profile, not just convenience or cost.</span><span data-lang="de">Jede Empfehlung wird an Ihrem Risikoprofil gemessen – nicht nur an Komfort oder Kosten.</span></p>
       </div>
     </div>
   </div>
 </section>
 
-<hr class="divider">
+<!-- NUMBERED POPULAR SERVICES INDEX -->
+<section id="index">
+  <div class="section-inner">
+    <p class="section-eyebrow"><span data-lang="en">Service Index</span><span data-lang="de">Leistungsübersicht</span></p>
+    <h2 class="section-title"><span data-lang="en">Popular services by Akabtech.</span><span data-lang="de">Beliebte Leistungen von Akabtech.</span></h2>
+    <div class="index-list">
+      <a href="#svc-01" class="index-row">
+        <span class="idx mono">01</span>
+        <span class="idx-title"><span data-lang="en">IT Support — Hardware &amp; Software</span><span data-lang="de">IT-Support — Hard- &amp; Software</span></span>
+        <span class="idx-arrow">→</span>
+      </a>
+      <a href="#svc-02" class="index-row">
+        <span class="idx mono">02</span>
+        <span class="idx-title"><span data-lang="en">System Administration</span><span data-lang="de">Systemadministration</span></span>
+        <span class="idx-arrow">→</span>
+      </a>
+      <a href="#svc-03" class="index-row">
+        <span class="idx mono">03</span>
+        <span class="idx-title"><span data-lang="en">Network Management</span><span data-lang="de">Netzwerkverwaltung</span></span>
+        <span class="idx-arrow">→</span>
+      </a>
+      <a href="#svc-04" class="index-row">
+        <span class="idx mono">04</span>
+        <span class="idx-title"><span data-lang="en">Cloud Solutions</span><span data-lang="de">Cloud-Lösungen</span></span>
+        <span class="idx-arrow">→</span>
+      </a>
+      <a href="#svc-05" class="index-row">
+        <span class="idx mono">05</span>
+        <span class="idx-title"><span data-lang="en">Cyber Security</span><span data-lang="de">Cybersicherheit</span></span>
+        <span class="idx-arrow">→</span>
+      </a>
+      <a href="#svc-06" class="index-row">
+        <span class="idx mono">06</span>
+        <span class="idx-title"><span data-lang="en">Web Design</span><span data-lang="de">Webdesign</span></span>
+        <span class="idx-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-<!-- SERVICES -->
+<!-- SERVICES DETAIL -->
 <section id="services">
   <div class="section-inner">
-    <p class="section-eyebrow">
-      <span data-lang="en">What We Offer</span>
-      <span data-lang="de">Unsere Leistungen</span>
-    </p>
-    <h2 class="section-title">
-      <span data-lang="en">End-to-end IT services<br>for modern businesses.</span>
-      <span data-lang="de">Umfassende IT-Dienstleistungen<br>für moderne Unternehmen.</span>
-    </h2>
+    <p class="section-eyebrow"><span data-lang="en">What We Offer</span><span data-lang="de">Unsere Leistungen</span></p>
+    <h2 class="section-title"><span data-lang="en">End-to-end IT services<br>for modern businesses.</span><span data-lang="de">Umfassende IT-Dienstleistungen<br>für moderne Unternehmen.</span></h2>
     <p class="section-lead">
       <span data-lang="en">From day-to-day hardware troubleshooting to enterprise cloud architecture and security hardening — we cover the full IT lifecycle.</span>
       <span data-lang="de">Von der täglichen Hardware-Fehlerbehebung bis zur Cloud-Architektur und Sicherheitshärtung – wir begleiten den gesamten IT-Lebenszyklus.</span>
     </p>
 
     <div class="services-grid">
-
-      <!-- IT Support -->
-      <div class="svc-card">
+      <div class="svc-card" id="svc-01">
         <span class="svc-icon">🖥️</span>
-        <div class="svc-title">
-          <span data-lang="en">IT Support — Hardware &amp; Software</span>
-          <span data-lang="de">IT-Support — Hard- &amp; Software</span>
-        </div>
+        <div class="svc-title"><span data-lang="en">IT Support — Hardware &amp; Software</span><span data-lang="de">IT-Support — Hard- &amp; Software</span></div>
         <div class="svc-body">
           <span data-lang="en">Hands-on troubleshooting, setup, and maintenance of desktops, laptops, servers, and peripherals. Software installation, licensing, and OS management.</span>
           <span data-lang="de">Direkte Fehleranalyse, Einrichtung und Wartung von Desktops, Laptops, Servern und Peripheriegeräten. Software-Installation, Lizenzierung und Betriebssystemverwaltung.</span>
@@ -645,119 +561,111 @@
         </div>
       </div>
 
-      <!-- System -->
-      <div class="svc-card">
+      <div class="svc-card" id="svc-02">
         <span class="svc-icon">⚙️</span>
-        <div class="svc-title">
-          <span data-lang="en">System Administration</span>
-          <span data-lang="de">Systemadministration</span>
-        </div>
+        <div class="svc-title"><span data-lang="en">System Administration</span><span data-lang="de">Systemadministration</span></div>
         <div class="svc-body">
           <span data-lang="en">Windows Server setup, Active Directory design and management, Microsoft 365 Exchange Online &amp; Hybrid deployments, and Microsoft Entra ID (Azure AD) integration.</span>
           <span data-lang="de">Windows-Server-Einrichtung, Active-Directory-Design, Microsoft-365-Exchange-Online- &amp; Hybrid-Deployments sowie Microsoft-Entra-ID-Integration.</span>
         </div>
         <div class="svc-tags">
-          <span class="svc-tag">Windows Server</span>
-          <span class="svc-tag">Active Directory</span>
-          <span class="svc-tag">M365 Exchange</span>
-          <span class="svc-tag">Entra ID</span>
-          <span class="svc-tag">Hybrid</span>
+          <span class="svc-tag">Windows Server</span><span class="svc-tag">Active Directory</span>
+          <span class="svc-tag">M365 Exchange</span><span class="svc-tag">Entra ID</span><span class="svc-tag">Hybrid</span>
         </div>
       </div>
 
-      <!-- Network -->
-      <div class="svc-card">
+      <div class="svc-card" id="svc-03">
         <span class="svc-icon">🌐</span>
-        <div class="svc-title">
-          <span data-lang="en">Network Management</span>
-          <span data-lang="de">Netzwerkverwaltung</span>
-        </div>
+        <div class="svc-title"><span data-lang="en">Network Management</span><span data-lang="de">Netzwerkverwaltung</span></div>
         <div class="svc-body">
           <span data-lang="en">IP address planning, VLAN design, and full configuration of Cisco switches &amp; routers. LAN/WAN optimisation, monitoring, and documentation.</span>
           <span data-lang="de">IP-Adressplanung, VLAN-Design und vollständige Konfiguration von Cisco-Switches &amp; Routern. LAN/WAN-Optimierung, Monitoring und Dokumentation.</span>
         </div>
         <div class="svc-tags">
-          <span class="svc-tag">Cisco IOS</span>
-          <span class="svc-tag">VLANs</span>
-          <span class="svc-tag">IP Management</span>
-          <span class="svc-tag">WAN</span>
+          <span class="svc-tag">Cisco IOS</span><span class="svc-tag">VLANs</span><span class="svc-tag">IP Management</span><span class="svc-tag">WAN</span>
         </div>
       </div>
 
-      <!-- Cloud -->
-      <div class="svc-card">
+      <div class="svc-card" id="svc-04">
         <span class="svc-icon">☁️</span>
-        <div class="svc-title">
-          <span data-lang="en">Cloud Solutions</span>
-          <span data-lang="de">Cloud-Lösungen</span>
-        </div>
+        <div class="svc-title"><span data-lang="en">Cloud Solutions</span><span data-lang="de">Cloud-Lösungen</span></div>
         <div class="svc-body">
           <span data-lang="en">Multi-cloud architecture, migration, and cost optimisation across Microsoft Azure, Amazon AWS, and Google Cloud Platform. IaaS, PaaS, and hybrid strategies.</span>
           <span data-lang="de">Multi-Cloud-Architektur, Migration und Kostenoptimierung auf Microsoft Azure, Amazon AWS und Google Cloud Platform. IaaS, PaaS und Hybrid-Strategien.</span>
         </div>
         <div class="svc-tags">
-          <span class="svc-tag">Azure</span>
-          <span class="svc-tag">AWS</span>
-          <span class="svc-tag">Google Cloud</span>
-          <span class="svc-tag">Migration</span>
+          <span class="svc-tag">Azure</span><span class="svc-tag">AWS</span><span class="svc-tag">Google Cloud</span><span class="svc-tag">Migration</span>
         </div>
       </div>
 
-      <!-- Cyber Security -->
-      <div class="svc-card">
+      <div class="svc-card" id="svc-05">
         <span class="svc-icon">🔐</span>
-        <div class="svc-title">
-          <span data-lang="en">Cyber Security</span>
-          <span data-lang="de">Cybersicherheit</span>
-        </div>
+        <div class="svc-title"><span data-lang="en">Cyber Security</span><span data-lang="de">Cybersicherheit</span></div>
         <div class="svc-body">
           <span data-lang="en">Website protection, Data Loss Prevention (DLP), phishing email analysis &amp; defence, security awareness training, and vulnerability assessments tailored to your risk profile.</span>
           <span data-lang="de">Website-Schutz, Data Loss Prevention (DLP), Phishing-E-Mail-Analyse und -Abwehr, Security-Awareness-Schulungen sowie Schwachstellenanalysen passend zu Ihrem Risikoprofil.</span>
         </div>
         <div class="svc-tags">
-          <span class="svc-tag">DLP</span>
-          <span class="svc-tag">Anti-Phishing</span>
-          <span class="svc-tag">Awareness</span>
-          <span class="svc-tag">Web Protection</span>
+          <span class="svc-tag">DLP</span><span class="svc-tag">Anti-Phishing</span><span class="svc-tag">Awareness</span><span class="svc-tag">Web Protection</span>
         </div>
       </div>
 
-      <!-- Web Design -->
-      <div class="svc-card">
+      <div class="svc-card" id="svc-06">
         <span class="svc-icon">🎨</span>
-        <div class="svc-title">
-          <span data-lang="en">Web Design</span>
-          <span data-lang="de">Webdesign</span>
-        </div>
+        <div class="svc-title"><span data-lang="en">Web Design</span><span data-lang="de">Webdesign</span></div>
         <div class="svc-body">
           <span data-lang="en">Clean, responsive websites built with semantic HTML &amp; CSS. From landing pages to corporate sites — fast, accessible, and optimised for search engines.</span>
           <span data-lang="de">Saubere, responsive Websites mit semantischem HTML &amp; CSS. Von Landingpages bis zu Unternehmensseiten – schnell, barrierefrei und suchmaschinenoptimiert.</span>
         </div>
         <div class="svc-tags">
-          <span class="svc-tag">HTML5</span>
-          <span class="svc-tag">CSS3</span>
-          <span class="svc-tag">Responsive</span>
-          <span class="svc-tag">SEO</span>
+          <span class="svc-tag">HTML5</span><span class="svc-tag">CSS3</span><span class="svc-tag">Responsive</span><span class="svc-tag">SEO</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <hr class="divider">
 
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-eyebrow"><span data-lang="en">About Akabtech</span><span data-lang="de">Über Akabtech</span></p>
+    <h2 class="section-title"><span data-lang="en">Your trusted IT partner<br>since 2025.</span><span data-lang="de">Ihr verlässlicher IT-Partner<br>seit 2025.</span></h2>
+    <p class="section-lead">
+      <span data-lang="en">Akabtech is an independent IT consultancy based in Bern, Switzerland. Founded in 2025 by Akram Abubaker, we bring enterprise-grade expertise to businesses of every size — with a focus on reliability, transparency, and security-first thinking.</span>
+      <span data-lang="de">Akabtech ist eine unabhängige IT-Beratung mit Sitz in Bern, Schweiz. Gegründet 2025 von Akram Abubaker, bieten wir Unternehmen jeder Grösse erstklassiges IT-Know-how — mit Fokus auf Zuverlässigkeit, Transparenz und Security-First-Denken.</span>
+    </p>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3><span data-lang="en">🎯 Our Mission</span><span data-lang="de">🎯 Unsere Mission</span></h3>
+        <p>
+          <span data-lang="en">We bridge the gap between complex technology and real business needs. Whether you're a growing SME or an established enterprise, Akabtech delivers tailored solutions that keep your systems running, your data protected, and your team productive.</span>
+          <span data-lang="de">Wir schliessen die Lücke zwischen komplexer Technologie und realen Geschäftsanforderungen. Egal ob wachsendes KMU oder etabliertes Unternehmen – Akabtech liefert massgeschneiderte Lösungen für stabile Systeme, geschützte Daten und produktive Teams.</span>
+        </p>
+        <div class="about-pill-row">
+          <span class="pill">IT Support</span><span class="pill">Cyber Security</span><span class="pill">Cloud</span><span class="pill">Networking</span><span class="pill">Web Design</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <h3><span data-lang="en">🌍 Why Akabtech?</span><span data-lang="de">🌍 Warum Akabtech?</span></h3>
+        <p>
+          <span data-lang="en">As a self-employed specialist, you get direct access to senior expertise — no middlemen, no delegation chains. Projects are handled with full accountability, clear communication in German and English, and a commitment to long-term partnerships over one-off fixes.</span>
+          <span data-lang="de">Als selbstständiger Spezialist erhalten Sie direkten Zugang zu Senior-Expertise – kein Mittelmann, keine Delegationsketten. Projekte werden mit voller Verantwortung, klarer Kommunikation auf Deutsch und Englisch und dem Ziel langfristiger Partnerschaften umgesetzt.</span>
+        </p>
+        <div class="about-pill-row">
+          <span class="pill">🇨🇭 Bern Based</span><span class="pill">DE / EN</span><span class="pill">Direct Contact</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
-    <p class="section-eyebrow">
-      <span data-lang="en">Get in Touch</span>
-      <span data-lang="de">Kontakt</span>
-    </p>
-    <h2 class="section-title">
-      <span data-lang="en">Ready to solve your IT challenges?</span>
-      <span data-lang="de">Bereit, Ihre IT-Herausforderungen zu lösen?</span>
-    </h2>
+    <p class="section-eyebrow"><span data-lang="en">Get in Touch</span><span data-lang="de">Kontakt</span></p>
+    <h2 class="section-title"><span data-lang="en">Talk to the person doing the work.</span><span data-lang="de">Sprechen Sie mit der Person, die die Arbeit macht.</span></h2>
     <p class="section-lead">
       <span data-lang="en">Reach out directly — no automated responses, no waiting queues. You speak with the expert from day one.</span>
       <span data-lang="de">Kontaktieren Sie uns direkt – keine automatisierten Antworten, keine Warteschlangen. Sie sprechen vom ersten Tag an mit dem Experten.</span>
@@ -766,47 +674,32 @@
     <div class="contact-wrap">
       <div class="contact-card">
         <div class="contact-name">Akram Abubaker</div>
-        <div class="contact-role">
-          <span data-lang="en">IT Service &amp; Cyber Security Analyst</span>
-          <span data-lang="de">IT-Service &amp; Cybersicherheitsanalyst</span>
-        </div>
-        <div class="contact-item">
-          <div class="contact-ico">📞</div>
-          <a href="tel:+41782467351">+41 78 246 73 51</a>
-        </div>
-        <div class="contact-item">
-          <div class="contact-ico">✉️</div>
-          <a href="mailto:akabtech.ict@gmail.com">akabtech.ict@gmail.com</a>
-        </div>
-        <div class="contact-item">
-          <div class="contact-ico">📍</div>
-          <span>Bern, Switzerland</span>
-        </div>
-        <div class="contact-item">
-          <div class="contact-ico">🗣️</div>
-          <span>Deutsch · English</span>
-        </div>
+        <div class="contact-role"><span data-lang="en">IT Service &amp; Cyber Security Analyst</span><span data-lang="de">IT-Service &amp; Cybersicherheitsanalyst</span></div>
+        <div class="contact-item"><div class="contact-ico">📞</div><a href="tel:+41782467351">+41 78 246 73 51</a></div>
+        <div class="contact-item"><div class="contact-ico">✉️</div><a href="mailto:akabtech.ict@gmail.com">akabtech.ict@gmail.com</a></div>
+        <div class="contact-item"><div class="contact-ico">📍</div><span>Bern, Switzerland</span></div>
+        <div class="contact-item"><div class="contact-ico">🗣️</div><span>Deutsch · English</span></div>
       </div>
 
       <div>
         <div class="contact-form">
           <div class="form-group">
-            <label><span data-lang="en">Your Name</span><span data-lang="de">Ihr Name</span></label>
-            <input type="text" placeholder="Max Mustermann">
+            <label for="cf-name"><span data-lang="en">Your Name</span><span data-lang="de">Ihr Name</span></label>
+            <input type="text" id="cf-name" name="name" placeholder="Max Mustermann" maxlength="120" autocomplete="name" required>
           </div>
           <div class="form-group">
-            <label>E-Mail</label>
-            <input type="email" placeholder="max@firma.ch">
+            <label for="cf-email">E-Mail</label>
+            <input type="email" id="cf-email" name="email" placeholder="max@firma.ch" maxlength="254" autocomplete="email" required>
           </div>
           <div class="form-group">
-            <label><span data-lang="en">Message</span><span data-lang="de">Nachricht</span></label>
-            <textarea placeholder="&#x1f4ac; ..."></textarea>
+            <label for="cf-message"><span data-lang="en">Message</span><span data-lang="de">Nachricht</span></label>
+            <textarea id="cf-message" name="message" placeholder="&#x1f4ac; ..." maxlength="2000" required></textarea>
           </div>
-          <button class="submit-btn" onclick="handleSend()">
+          <button class="submit-btn" type="button" id="sendBtn">
             <span data-lang="en">Send Message →</span>
             <span data-lang="de">Nachricht senden →</span>
           </button>
-          <p id="form-msg" style="font-size:.85rem;color:var(--gold);display:none;">
+          <p id="form-msg" class="form-msg">
             <span data-lang="en">✅ Message sent — we'll be in touch shortly.</span>
             <span data-lang="de">✅ Nachricht gesendet – wir melden uns bald.</span>
           </p>
@@ -818,21 +711,99 @@
 
 <!-- FOOTER -->
 <footer>
-  <span data-lang="en">© 2025 Akabtech — IT Service &amp; Cyber Security · Bern, Switzerland · Built with ❤️ by <span>Akram Abubaker</span></span>
-  <span data-lang="de">© 2025 Akabtech — IT-Service &amp; Cybersicherheit · Bern, Schweiz · Erstellt mit ❤️ von <span>Akram Abubaker</span></span>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">Akab<span>tech</span></div>
+      <p><span data-lang="en">Independent IT consultancy in Bern, Switzerland — support, networking, cloud and cyber security.</span><span data-lang="de">Unabhängige IT-Beratung in Bern, Schweiz — Support, Netzwerk, Cloud und Cybersicherheit.</span></p>
+    </div>
+    <div class="foot-col">
+      <h5><span data-lang="en">Services</span><span data-lang="de">Leistungen</span></h5>
+      <ul>
+        <li><a href="#svc-01"><span data-lang="en">IT Support</span><span data-lang="de">IT-Support</span></a></li>
+        <li><a href="#svc-02"><span data-lang="en">System Admin</span><span data-lang="de">Systemadmin</span></a></li>
+        <li><a href="#svc-03"><span data-lang="en">Network Management</span><span data-lang="de">Netzwerk</span></a></li>
+        <li><a href="#svc-04"><span data-lang="en">Cloud Solutions</span><span data-lang="de">Cloud</span></a></li>
+        <li><a href="#svc-05"><span data-lang="en">Cyber Security</span><span data-lang="de">Cybersicherheit</span></a></li>
+        <li><a href="#svc-06"><span data-lang="en">Web Design</span><span data-lang="de">Webdesign</span></a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5><span data-lang="en">Company</span><span data-lang="de">Unternehmen</span></h5>
+      <ul>
+        <li><a href="#home"><span data-lang="en">Home</span><span data-lang="de">Startseite</span></a></li>
+        <li><a href="#about"><span data-lang="en">About Us</span><span data-lang="de">Über uns</span></a></li>
+        <li><a href="#index"><span data-lang="en">Services</span><span data-lang="de">Leistungen</span></a></li>
+        <li><a href="#contact"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></h5>
+      <ul>
+        <li class="foot-contact-line">📞&nbsp;<a href="tel:+41782467351">+41 78 246 73 51</a></li>
+        <li class="foot-contact-line">✉️&nbsp;<a href="mailto:akabtech.ict@gmail.com">akabtech.ict@gmail.com</a></li>
+        <li class="foot-contact-line">📍&nbsp;<span>Bern, Switzerland</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>
+      <span data-lang="en">© 2025 Akabtech — IT Service &amp; Cyber Security · Built by <span class="gold">Akram Abubaker</span></span>
+      <span data-lang="de">© 2025 Akabtech — IT-Service &amp; Cybersicherheit · Erstellt von <span class="gold">Akram Abubaker</span></span>
+    </span>
+  </div>
 </footer>
 
 <script>
+  'use strict';
+
   function setLang(lang) {
     document.body.className = 'lang-' + lang;
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.langBtn === lang);
+    });
   }
-  function handleSend() {
-    const msg = document.getElementById('form-msg');
-    msg.style.display = 'block';
-    setTimeout(() => msg.style.display = 'none', 4000);
-  }
+
+  document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.dataset.langBtn));
+  });
+
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Contact form: client-side UX only. No user input is ever written back
+  // into the DOM (no innerHTML/insertAdjacentHTML), so there is no reflected-
+  // XSS surface here. This does NOT send the message anywhere — wire it to
+  // a real endpoint before relying on it in production.
+  const sendBtn = document.getElementById('sendBtn');
+  const formMsg = document.getElementById('form-msg');
+  let sendTimer = null;
+
+  sendBtn.addEventListener('click', () => {
+    const nameEl = document.getElementById('cf-name');
+    const emailEl = document.getElementById('cf-email');
+    const msgEl = document.getElementById('cf-message');
+
+    const name = nameEl.value.trim();
+    const email = emailEl.value.trim();
+    const message = msgEl.value.trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!name || !emailOk || !message) {
+      nameEl.setCustomValidity(name ? '' : 'Required');
+      emailEl.setCustomValidity(emailOk ? '' : 'Enter a valid email');
+      msgEl.setCustomValidity(message ? '' : 'Required');
+      nameEl.reportValidity();
+      emailEl.reportValidity();
+      msgEl.reportValidity();
+      return;
+    }
+
+    formMsg.classList.add('show');
+    clearTimeout(sendTimer);
+    sendTimer = setTimeout(() => formMsg.classList.remove('show'), 4000);
+  });
 </script>
 </body>
 </html>
